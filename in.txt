@@ -1,2 +1,8 @@
-hey + dude / you
-me = hey - two * what / who + three ;
+first = = one1 + two2 - three3 / four4 ;
+first = one1 + two2 - three3 / four4
+first = 1 + - two2 - three3 / four4 ;
+first = one1 + two2 ? three3 / four4 ;
+second = 4 + ( one1 * two2 ) * ( three3 + four4 ;
+third = one1 + 24 - three3 ;
+one1 +- delta
+sixty6 / min = fourth ;
