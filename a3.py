@@ -25,14 +25,21 @@ def isOp(token):
 
 def isChar(token):
 	# use RegEx here for chars and return True else False
-	str = re.compile('[a-zA-Z]')
-	if str.match(token):
-		print('worked')
-		# return True
+	if re.search('[a-zA-Z]', token):
+		return True
+	else:
+		return False
 
 def checkId(token):
-	if isChar(token) or '_':
-		return True
+	under_score = re.compile('_')
+	char = re.compile('[a-zA-Z]')
+	idOk = re.compile('[a-zA-Z0-9_]')
+	if char.match(token, 0) or under_score.match(token, 0):
+		if idOk.match(token):
+			print('this is an ID.')
+			return True
+		else:
+			return False
 	else:
 		return False
 
