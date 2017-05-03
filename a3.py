@@ -72,11 +72,7 @@ def checkAssignment(tokens):
 			if ';' not in tokens:
 				while len(tokens) != 0:
 					final.append(tokens.pop(0))
-<<<<<<< HEAD
 				error_list.append("ERROR: Statement did not contain ';' to end the assignment.")
-=======
-				error_list.append("ERROR: Statement did not contain ';' to end the statement.")
->>>>>>> e4fccf1798c61f442aea34b7f066b80bc05bb7e7
 				error = True
 			else:
 				final.append(tokens.pop(0)) # id
@@ -89,11 +85,8 @@ def checkAssignment(tokens):
 						final.append(tokens.pop(0)) # op
 						final.append(tokens.pop(0)) # id
 					else:
-<<<<<<< HEAD
 						error_list.append("ERROR: assignment is not of correct format.")
 						error = True
-=======
->>>>>>> e4fccf1798c61f442aea34b7f066b80bc05bb7e7
 						while len(tokens) != 0:
 							final.append(tokens.pop(0))
 						break
