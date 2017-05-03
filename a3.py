@@ -104,6 +104,8 @@ def checkAssignment(tokens):
 # for every line in the in.txt, check if valid statement
 for line in inputFile:
 	tokens = line.split()
+	if line in ['\n', '\r\n']:
+		continue
 	checkAssignment(tokens)
 	
 	if not error:
