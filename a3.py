@@ -1,8 +1,9 @@
 '''
-David Arce
-Logan Lasiter
+David Arce 
+Logan Lasiter cssc1034
 Assignment #3 - Parser
 '''
+
 
 import re
 
@@ -10,36 +11,37 @@ inputFile = open('in.txt', 'r')
 outputFile = open('out.txt', 'w')
 
 final = []
+error_list = []
 valid = {}
 invalid = {}
-isValid = True
 v_key = 0
 in_key = 0
 
 def isOp(token):
-	# could just use else if's or dict or regex to test for op.
+	global error
 	if token == '+' or token == '-' or token == '*' or token == '/' or token == '%':
 		return True
 	else:
 		return False
 
 def isChar(token):
-	# use RegEx here for chars and return True else False
 	if re.search('[a-zA-Z]', token):
 		return True
 	else:
 		return False
 
 def checkId(token):
+	global error
 	under_score = re.compile('_')
-	char = re.compile('[a-zA-Z]')
-	idOk = re.compile('[a-zA-Z0-9_]')
+	char = re.compile('[a-zA-Z()]')
+	idOk = re.compile('[a-zA-Z0-9_()]')
 	if char.match(token, 0) or under_score.match(token, 0):
-		if idOk.match(token):
-			print('this is an ID.')
-			return True
-		else:
-			return False
+		for x in token:
+			if not idOk.match(x):
+				error_list.append("ERROR: Id is not of correct format. Id's consist of Chars, Digits & Underscores.")
+				error = True
+				return False
+		return True
 	else:
 		return False
 
@@ -48,7 +50,6 @@ def isExpression(tokens):
 		final.append(tokens.pop(0)) # id
 		final.append(tokens.pop(0)) # op
 		isExpression(tokens)
-		# elif ';' in tokens:
 		return True
 	else:
 		return False
@@ -60,15 +61,15 @@ def isExpression(tokens):
 	new list "Final" if they are 'id op id' format.
 '''
 def checkAssignment(tokens):
-	# will need to check if '(' or ')' are in tokens
-	print(tokens)
-	if checkId(tokens[0][0]):
+	global error
+	error = False
+	if checkId(tokens[0]):
 		if '=' in tokens:
-			print("This is an assignment.")
 			if ';' not in tokens:
-				print("Invalid Statement...")
 				while len(tokens) != 0:
 					final.append(tokens.pop(0))
+				error_list.append("ERROR: Statement did not contain ';' to end the assignment.")
+				error = True
 			else:
 				final.append(tokens.pop(0)) # id
 				final.append(tokens.pop(0)) # '='
@@ -80,50 +81,51 @@ def checkAssignment(tokens):
 						final.append(tokens.pop(0)) # op
 						final.append(tokens.pop(0)) # id
 					else:
-						print("Invalid Statement...")
+						error_list.append("ERROR: assignment is not of correct format.")
+						error = True
 						while len(tokens) != 0:
 							final.append(tokens.pop(0))
 						break
-
-			# do next thing...the '=' will be the 2nd token so we can start at the 3rd token.
-			# the 3rd token will HAVE to start with an id and develop an expression... id op id op id ...blah
 		else:
-			print("This is an expression.")
 			while len(tokens) != 0:
 				if isExpression(tokens):
 					final.append(tokens.pop(0)) # id
 					final.append(tokens.pop(0)) # op
 					final.append(tokens.pop(0)) # id
 				else:
-					print("Invalid Statement...")
 					while len(tokens) != 0:
 						final.append(tokens.pop(0))
 					break
-			# do next thing... id op id (we already know first id is there, go to op)
-	else:
-		print("Error with first Id...")
 
 
 
 
 # for every line in the in.txt, check if valid statement
 for line in inputFile:
+	if line in ['\n', '\r\n']:
+		continue
 	tokens = line.split()
 	checkAssignment(tokens)
-	# outputFile.write('Works\n')
-	print(final)
 	
-# 	if isValid:
-# 		valid[v_key] = final
-# 		v_key += 1
-# 	else:
-# 		invalid[in_key] = final
-# 		in_key += 1
+	if not error:
+		valid[v_key] = final
+		v_key += 1
+	else:
+		invalid[in_key] = final
+		in_key += 1
 
-# 	final = []
+	final = []
 
-# for key, val in valid:
-# 	print('\n'.join(str(val) for val in myList))
+outputFile.write('-- Good (Valid) Statements:\n\n')
+for key, val in valid.items():
+	outputFile.write(' '.join(val) + '\n')
+
+outputFile.write('\n-- Bad (Invalid) Statements:\n\n')
+i = 0
+for key, val in invalid.items():
+	outputFile.write(' '.join(val) + '\n')
+	outputFile.write(error_list[i] + '\n')
+	i += 1
 
 
 inputFile.close()

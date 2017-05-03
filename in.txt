@@ -6,3 +6,12 @@ second = 4 + ( one1 * two2 ) * ( three3 + four4 ;
 third = one1 + 24 - three3 ;
 one1 +- delta
 sixty6 / min = fourth ;
+
+
+first = one1 + two2 - three3 / four4 ;
+second = one1 * (two2 * three3) ;
+second = one1 * (two2 * three3) ;
+third = ONE + twenty - three3 ;
+third = old * thirty2 / b567 ;
+one1 * i8766e98e + bignum
+_first = old * thirty2 / b567 ;

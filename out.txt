@@ -1,0 +1,27 @@
+-- Good (Valid) Statements:
+
+one1 +- delta
+first = one1 + two2 - three3 / four4 ;
+second = one1 * (two2 * three3) ;
+second = one1 * (two2 * three3) ;
+third = ONE + twenty - three3 ;
+third = old * thirty2 / b567 ;
+one1 * i8766e98e + bignum
+_first = old * thirty2 / b567 ;
+
+-- Bad (Invalid) Statements:
+
+first = = one1 + two2 - three3 / four4 ;
+ERROR: assignment is not of correct format.
+first = one1 + two2 - three3 / four4
+ERROR: Statement did not contain ';' to end the assignment.
+first = 1 + - two2 - three3 / four4 ;
+ERROR: assignment is not of correct format.
+first = one1 + two2 ? three3 / four4 ;
+ERROR: assignment is not of correct format.
+second = 4 + ( one1 * two2 ) * ( three3 + four4 ;
+ERROR: assignment is not of correct format.
+third = one1 + 24 - three3 ;
+ERROR: assignment is not of correct format.
+sixty6 / min = fourth ;
+ERROR: assignment is not of correct format.
