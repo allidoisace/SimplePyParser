@@ -1,10 +1,9 @@
-David
-Logan cssc1034
-
-SimplePyParser
-
+#SimplePyParser
+cssc1034
+Authors: David, Logan
 This program will take input from a text file, we used in.txt with this testing data:
 
+##Example Input
 first = one1 + two2 - three3 / four4 ;
 second = one1 * (two2 * three3) ;
 second = one1 * (two2 * three3) ;
