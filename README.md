@@ -1,7 +1,25 @@
-David
-Logan cssc1034
+David Arce cssc0858
+Logan Lasiter cssc1034
 
-SimplePyParser
+CS 530 Assignment #3 - Parser
+
+Program Name: a3.py
+
+Files Included:
+README.md
+a3.py
+in.txt
+out.txt
+
+Execution:
+Run the program by typing in cmd of program directory:
+(Edoras has python 3.6 & 2.7 installed: http://edoras.sdsu.edu/software/)
+	With ONLY Python 3 installed:
+		python a3.py
+	With Python 2 & 3 installed:
+		python3 a3.py
+The execution will output valid and invalid statements and their errors in the out.txt file.
+
 
 This program will take input from a text file, we used in.txt with this testing data:
 
@@ -55,17 +73,15 @@ ERROR with Operator ' = ' incorrect operator. A valid operator consists of '+', 
 
 Grammar for valid statements (BNF):
 
- <id> 			::= 	_|<char>|<id><char>|<id><digit>|<id>_
+<id> ::= _|<char>|<id><char>|<id><digit>|<id>_
 
- <digit> 		::= 	0|1|2|3|4|5|6|7|8|9
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
 
- <char> 			::= 	a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|
- 		   				y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|
- 		   				W|X|Y|Z
+<char> ::= a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
 
- <op>			::=		+|-|*|/|% 
+<op> ::= +|-|*|/|% 
 
- <exp>			::=		id op id {op id}*
+<exp> ::= id op id {op id}*
 
- <assignment>	::=		id = exp ;
+<assignment>::= id = exp ;
 
