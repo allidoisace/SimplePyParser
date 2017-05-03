@@ -1,9 +1,8 @@
 '''
-David Arce 
-Logan Lasiter cssc1034
+David Arce
+Logan Lasiter
 Assignment #3 - Parser
 '''
-
 
 import re
 
@@ -22,7 +21,7 @@ def isOp(token):
 	if token == '+' or token == '-' or token == '*' or token == '/' or token == '%':
 		return True
 	else:
-		error_list.append("ERROR: Operator is not defined. A valid operator consists of '+', '-', '*', '/', '%'.")
+		error_list.append("ERROR with Operator ' " + str(token) + " ' incorrect operator. A valid operator consists of '+', '-', '*', '/', '%'.")
 		error = True
 		return False
 
@@ -40,12 +39,12 @@ def checkId(token):
 	if char.match(token, 0) or under_score.match(token, 0):
 		for x in token:
 			if not idOk.match(x):
-				error_list.append("ERROR: Id is not of correct format. Id's consist of Chars, Digits & Underscores.")
+				error_list.append("ERROR with Id ' " + str(token) + " ' incorrect format. Id's consist of Chars, Digits & Underscores.")
 				error = True
 				return False
 		return True
 	else:
-		error_list.append("ERROR: Id is not of correct format. Id's must begin with a Char or Underscore.")
+		error_list.append("ERROR with Id ' " + str(token) + " ' incorrect format. Id's must begin with a Char or Underscore.")
 		error = True
 		return False
 
@@ -72,7 +71,7 @@ def checkAssignment(tokens):
 			if ';' not in tokens:
 				while len(tokens) != 0:
 					final.append(tokens.pop(0))
-				error_list.append("ERROR: Statement did not contain ';' to end the assignment.")
+				error_list.append("ERROR with Statement, incorrect format. did not contain ';' to end the statement.")
 				error = True
 			else:
 				final.append(tokens.pop(0)) # id
@@ -85,8 +84,6 @@ def checkAssignment(tokens):
 						final.append(tokens.pop(0)) # op
 						final.append(tokens.pop(0)) # id
 					else:
-						error_list.append("ERROR: assignment is not of correct format.")
-						error = True
 						while len(tokens) != 0:
 							final.append(tokens.pop(0))
 						break
@@ -106,8 +103,6 @@ def checkAssignment(tokens):
 
 # for every line in the in.txt, check if valid statement
 for line in inputFile:
-	if line in ['\n', '\r\n']:
-		continue
 	tokens = line.split()
 	checkAssignment(tokens)
 	
