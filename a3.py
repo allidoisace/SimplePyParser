@@ -1,8 +1,16 @@
 '''
-David Arce cssc0858
-Logan Lasiter cssc1034
+David Arce - cssc0858
+Logan Lasiter - cssc1034
 
-CS 530 Assignment #3 - Parser
+CS 530 Spring 2017 - Assignment #3 - Parser
+
+This File: a3.py
+
+Files Included in package:
+README.md
+a3.py
+in.txt
+out.txt
 
 Execution:
 Run the program by typing in cmd of program directory:

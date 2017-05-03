@@ -1,11 +1,11 @@
-David Arce cssc0858
-Logan Lasiter cssc1034
+David Arce - cssc0858
+Logan Lasiter - cssc1034
 
-CS 530 Assignment #3 - Parser
+CS 530 Spring 2017 - Assignment #3 - Parser
 
-Program Name: a3.py
+This File: README.md
 
-Files Included:
+Files Included in package:
 README.md
 a3.py
 in.txt
